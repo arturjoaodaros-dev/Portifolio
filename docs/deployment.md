@@ -6,9 +6,11 @@ O site é 100% estático (`dist/`). Hospedagem prevista: **Vercel** (Netlify fun
 
 1. Crie um repositório novo no GitHub para o portfólio e envie o código. _(O repositório antigo `Padaria-Silvano` não deve ser reutilizado.)_
 2. Em [vercel.com](https://vercel.com), **Add New → Project**, importe o repositório. O `vercel.json` já define framework, build (`npm run build`) e saída (`dist`).
-3. Em **Settings → Environment Variables**, confirme:
-   - `VITE_SITE_URL` = `https://arturdaros.is-a.dev`
-   - `VITE_GOATCOUNTER_CODE` = código do GoatCounter (ver [operação](operations.md)); pode ficar vazio.
+3. Em **Settings → Environment Variables** (todas **opcionais**):
+   - `VITE_SITE_URL`: só defina se o domínio mudar. Ausente ou vazia, o build usa `https://arturdaros.is-a.dev`.
+   - `VITE_GOATCOUNTER_CODE`: código do GoatCounter (ver [operação](operations.md)). Vazia ou ausente = analytics desligado.
+
+   Não crie variável com valor em branco por engano e não use `/`: o build aceita, mas o certo é omitir.
 4. **Deploy.** A partir daí: push na `main` publica em produção e cada pull request ganha um _preview_. O CI do GitHub (`.github/workflows/ci.yml`) roda lint, build, `check` e Lighthouse. **CD é feito pela própria Vercel**, sem segredos no repositório.
 
 > Sem repositório GitHub por enquanto? `npm run verify` gera o `dist/` e o CLI da Vercel (`npx vercel --prod`) publica a partir da pasta.

@@ -4,11 +4,11 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { loadEnv } from 'vite'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const dist = path.join(root, 'dist')
-const siteUrl = (loadEnv('production', root, 'VITE_').VITE_SITE_URL ?? '').replace(/\/$/, '')
+// A URL esperada é a que o próprio HTML declara (canonical); sitemap, robots, llms.txt e og:image precisam concordar com ela.
+let siteUrl = ''
 
 const errors = []
 const check = (condition, message) => condition || errors.push(message)
@@ -34,14 +34,14 @@ for (const file of required) check(existsSync(path.join(dist, file)), `arquivo a
 
 if (errors.length === 0) {
   const html = read('index.html')
-  check(siteUrl.startsWith('https://'), 'VITE_SITE_URL precisa ser uma URL https:// (ver .env)')
-  check(!html.includes('%VITE_'), 'index.html ainda tem placeholder %VITE_…% sem substituir')
-  check(new RegExp(`rel="canonical"\\s+href="${escapeRegExp(siteUrl)}/"`).test(html), 'canonical ausente ou com URL diferente de VITE_SITE_URL')
+  siteUrl = /rel="canonical"\s+href="(https?:\/\/[^"]+?)\/"/.exec(html)?.[1] ?? ''
+  check(siteUrl.startsWith('https://'), 'canonical ausente ou sem https:// (confira VITE_SITE_URL)')
+  check(!/%(VITE_)?SITE_URL%/.test(html), 'index.html ainda tem placeholder %SITE_URL% sem substituir')
   check(new RegExp(`property="og:image"\\s+content="${escapeRegExp(siteUrl)}/og.png"`).test(html), 'og:image precisa ser URL absoluta')
   check(/<div id="root"><[^/]/.test(html) && html.includes('Artur João</span>'), 'index.html não está pré-renderizado (rode npm run build completo)')
   check(/<title>[^<]{10,}<\/title>/.test(html), 'title ausente')
   check(/name="description"\s+content="[^"]{50,}/.test(html), 'meta description ausente ou curta demais')
-  check(read('sitemap.xml').includes(`<loc>${siteUrl}/</loc>`), 'sitemap.xml não aponta para VITE_SITE_URL')
+  check(read('sitemap.xml').includes(`<loc>${siteUrl}/</loc>`), 'sitemap.xml não aponta para o canonical')
   check(read('robots.txt').includes(`Sitemap: ${siteUrl}/sitemap.xml`), 'robots.txt sem a linha Sitemap')
   check(read('llms.txt').includes(siteUrl), 'llms.txt sem a URL do site')
   check(/noindex/.test(read('404.html')), '404.html precisa de noindex')

@@ -1,6 +1,21 @@
 import { readFileSync } from 'node:fs'
 import type { Plugin } from 'vite'
 
+export const DEFAULT_SITE_URL = 'https://arturdaros.is-a.dev'
+
+/** Normaliza VITE_SITE_URL: variável ausente ou vazia (comum em painéis de deploy) usa o padrão. */
+export function resolveSiteUrl(value: string | undefined) {
+  return (value?.trim() || DEFAULT_SITE_URL).replace(/\/+$/, '')
+}
+
+/** Troca %SITE_URL% no HTML. Roda antes do Vite tratar href/content como arquivos (uma URL vazia viraria "/" e quebraria o build). */
+export function siteUrlInHtml(siteUrl: string): Plugin {
+  return {
+    name: 'site-url-in-html',
+    transformIndexHtml: { order: 'pre', handler: (html) => html.replaceAll('%SITE_URL%', siteUrl) },
+  }
+}
+
 /** Pré-carrega a fonte do título (que tem hash no build) para evitar a troca visível de fonte. */
 export function preloadDisplayFont(): Plugin {
   let base = '/'

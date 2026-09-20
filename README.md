@@ -51,7 +51,7 @@ Copie [`.env.example`](.env.example) para `.env` (não versionado) e ajuste. Var
 
 | Variável | Uso |
 | --- | --- |
-| `VITE_SITE_URL` | URL pública, sem barra final. Alimenta canonical, `og:*`, sitemap, robots e llms.txt. Padrão: `https://arturdaros.is-a.dev` |
+| `VITE_SITE_URL` | URL pública, sem barra final. Alimenta canonical, `og:*`, sitemap, robots e llms.txt. Ausente ou vazia, usa `https://arturdaros.is-a.dev` |
 | `VITE_GOATCOUNTER_CODE` | Código do site no GoatCounter. Vazio = analytics desligado (nenhum script é carregado) |
 
 ## Conteúdo

@@ -63,8 +63,8 @@ O Dependabot abre PRs semanais (npm, agrupando minor/patch) e mensais (Actions).
 
 | Sintoma | Causa provável |
 | --- | --- |
-| `npm run check` acusa placeholder `%VITE_…%` | variável ausente no `.env` |
+| `npm run check` acusa placeholder `%SITE_URL%` | o build não passou pelo plugin `siteUrlInHtml` (rode `npm run build` completo) |
 | `check`: "não está pré-renderizado" | rodou só `vite build`; use `npm run build` |
 | Console: erro de hidratação | conteúdo que difere entre servidor e cliente (datas, `window` no render) |
-| `og:image` sem URL absoluta | `VITE_SITE_URL` vazio ou sem `https://` |
+| Canonical/`og:image` com o domínio errado | `VITE_SITE_URL` definida com outro valor; remova-a (usa o padrão) ou corrija |
 | Certificado novo não aparece | falta a entrada em `SOURCES` ou rodar `npm run certs` |
