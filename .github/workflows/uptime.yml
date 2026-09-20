@@ -1,0 +1,39 @@
+name: Uptime
+
+# Monitoramento simples de disponibilidade. Só roda depois de ativado:
+#   Settings > Secrets and variables > Actions > Variables:
+#     UPTIME_ENABLED = true
+#     SITE_URL       = https://arturdaros.is-a.dev   (opcional; este é o valor padrão)
+# Se uma verificação falhar, o GitHub envia e-mail sobre a falha do workflow.
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  check:
+    if: vars.UPTIME_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      SITE_URL: ${{ vars.SITE_URL || 'https://arturdaros.is-a.dev' }}
+    steps:
+      - name: Páginas principais respondem 200 (com HTTPS válido)
+        run: |
+          set -eu
+          for path in / /robots.txt /sitemap.xml /llms.txt; do
+            code=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 --retry 2 --retry-delay 5 "$SITE_URL$path")
+            echo "$path -> $code"
+            [ "$code" = "200" ] || { echo "::error::$SITE_URL$path respondeu $code"; exit 1; }
+          done
+      - name: A home tem o conteúdo esperado
+        run: |
+          set -eu
+          curl -sS --max-time 20 "$SITE_URL/" | grep -q "Artur João Darós" || { echo "::error::conteúdo esperado não encontrado"; exit 1; }
+      - name: A 404 personalizada responde 404
+        run: |
+          set -eu
+          code=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 "$SITE_URL/__nao-existe__")
+          [ "$code" = "404" ] || { echo "::error::rota inexistente respondeu $code (esperado 404)"; exit 1; }

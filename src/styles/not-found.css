@@ -1,0 +1,38 @@
+.not-found {
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  gap: 1rem;
+  min-height: 100dvh;
+  padding-block: 3rem;
+}
+
+.not-found-code {
+  font-size: clamp(7rem, 32vw, 20rem);
+  font-weight: 700;
+  font-stretch: 78%;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+}
+
+.not-found-title {
+  font-size: var(--text-xl);
+  font-weight: 500;
+  font-stretch: 90%;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.not-found-text {
+  max-width: 32rem;
+  color: var(--ink-2);
+}
+
+.not-found-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
+  text-decoration-thickness: 0.08em;
+}

@@ -1,0 +1,108 @@
+.hero {
+  padding-block: clamp(2.25rem, 5vw, 4.5rem) clamp(3.5rem, 7vw, 6.5rem);
+}
+
+.grid {
+  display: grid;
+  gap: 0;
+}
+
+.eyebrow {
+  margin-bottom: clamp(1.25rem, 3vw, 2.25rem);
+}
+
+/* Celular: nome em duas linhas, o maior que cabe. Depois de 40rem: uma linha só,
+   dimensionada pela largura útil (o nome ocupa ~6,2 em). */
+.name {
+  font-size: clamp(3.25rem, 21vw, 5.5rem);
+  font-weight: 700;
+  font-stretch: 78%;
+  line-height: 0.88;
+  letter-spacing: -0.035em;
+}
+
+/* Quebra só entre "Artur João" e "Darós" */
+.name span {
+  display: inline-block;
+}
+
+.role {
+  margin-top: clamp(1.25rem, 2.6vw, 2.25rem);
+  font-size: var(--text-xl);
+  font-weight: 500;
+  font-stretch: 90%;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+
+.summary {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: clamp(2.5rem, 5vw, 4.5rem);
+  align-content: start;
+}
+
+.lead {
+  max-width: 34ch;
+  font-size: var(--text-lg);
+  line-height: 1.42;
+  text-wrap: pretty;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.75rem;
+}
+
+/* Ficha: resumo em formato de especificação */
+.profile {
+  margin-top: clamp(2.5rem, 5vw, 4.5rem);
+  border-bottom: 1px solid var(--ink);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 6.75rem minmax(0, 1fr);
+  gap: 1rem;
+  align-items: baseline;
+  padding-block: 0.8rem;
+  border-top: 1px solid var(--ink);
+}
+
+.names {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 0.85rem;
+  font-weight: 500;
+}
+
+@media (min-width: 40rem) {
+  .name {
+    font-size: min(12rem, calc((100vw - 2 * var(--gutter)) / 6.2));
+  }
+}
+
+@media (min-width: 64rem) {
+  .grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--col-gap);
+  }
+
+  .eyebrow,
+  .name,
+  .role {
+    grid-column: 1 / -1;
+  }
+
+  .summary {
+    grid-column: 1 / 7;
+    grid-row: 4;
+  }
+
+  .profile {
+    grid-column: 8 / -1;
+    grid-row: 4;
+    align-self: start;
+  }
+}

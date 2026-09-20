@@ -1,0 +1,56 @@
+:root {
+  /* Superfícies e tinta (contraste validado: texto ≥ 4,5:1 em todos os pares) */
+  --paper: #f1eee6;
+  --paper-2: #e7e3d8;
+  --ink: #141310;
+  --ink-2: #46433a;
+  --ink-3: #615d52;
+  --dark: #1a1915;
+  --on-dark: #f1eee6;
+  --on-dark-2: #b9b4a6;
+  --on-dark-3: #9a9587;
+
+  /* Única cor de destaque: marca-texto. Marca o que estou estudando ou explorando agora. */
+  --marker: #ffd23f;
+
+  /* Tokens semânticos — as faixas escuras (data-tone="dark") sobrescrevem estes valores */
+  --bg: var(--paper);
+  --bg-2: var(--paper-2);
+  --fg: var(--ink);
+  --fg-2: var(--ink-2);
+  --fg-3: var(--ink-3);
+  --line: rgb(20 19 16 / 0.18);
+  --line-strong: var(--ink);
+  --focus: var(--ink);
+
+  --font-sans: 'Archivo Variable', 'Archivo', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace;
+
+  /* Escala tipográfica fluida */
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-base: clamp(1.0625rem, 0.4vw + 1rem, 1.1875rem);
+  --text-lg: clamp(1.25rem, 1vw + 1rem, 1.625rem);
+  --text-xl: clamp(1.625rem, 2vw + 1rem, 2.5rem);
+  --title: clamp(2.125rem, 4.4vw, 4rem);
+
+  /* Ritmo e grid */
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --col-gap: clamp(1rem, 2vw, 2rem);
+  --max: 82rem;
+  --header-h: 4rem;
+  --section-y: clamp(4.5rem, 9vw, 8.5rem);
+
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+[data-tone='dark'] {
+  --bg: var(--dark);
+  --bg-2: #24231e;
+  --fg: var(--on-dark);
+  --fg-2: var(--on-dark-2);
+  --fg-3: var(--on-dark-3);
+  --line: rgb(241 238 230 / 0.2);
+  --line-strong: rgb(241 238 230 / 0.55);
+  --focus: var(--marker);
+}

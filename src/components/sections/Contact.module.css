@@ -1,0 +1,49 @@
+.intro {
+  max-width: 34rem;
+  font-size: var(--text-lg);
+  line-height: 1.42;
+  color: var(--fg-2);
+  text-wrap: pretty;
+}
+
+.email {
+  display: inline-block;
+  margin-top: clamp(1.25rem, 3.5vw, 2.5rem);
+  padding-block: 0.3em;
+  font-size: clamp(1.5rem, 4.6vw, 3.75rem);
+  font-weight: 600;
+  font-stretch: 88%;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  overflow-wrap: anywhere;
+  text-decoration-line: underline;
+  text-decoration-color: var(--marker);
+  text-decoration-thickness: 0.07em;
+  text-underline-offset: 0.16em;
+}
+
+.email:hover {
+  background: var(--marker);
+  color: var(--ink);
+}
+
+.profiles {
+  display: grid;
+  gap: 0;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.profile {
+  display: grid;
+  gap: 0.1rem 2rem;
+  align-items: center;
+  padding-block: 0.6rem;
+  border-top: 1px solid var(--line);
+}
+
+@media (min-width: 40rem) {
+  .profile {
+    grid-template-columns: 8rem minmax(0, 1fr);
+  }
+}

@@ -1,0 +1,165 @@
+/* Visualizador em tela cheia: mesma linguagem no desktop e no celular */
+.dialog {
+  width: 100%;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: var(--dark);
+  color: var(--on-dark);
+  --focus: var(--marker);
+}
+
+.dialog::backdrop {
+  background: var(--dark);
+}
+
+.dialog[open] {
+  display: grid;
+  animation: lightbox-in 0.15s ease-out;
+}
+
+@keyframes lightbox-in {
+  from {
+    opacity: 0;
+  }
+}
+
+.frame {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  height: 100%;
+  min-height: 0;
+  outline: none;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem clamp(1rem, 3vw, 2rem);
+  border-bottom: 1px solid rgb(241 238 230 / 0.2);
+}
+
+.bar :global(.label) {
+  color: var(--on-dark-3);
+  white-space: nowrap;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.tool {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 3rem;
+  padding: 0 1rem;
+  background: none;
+  border: 1px solid rgb(241 238 230 / 0.55);
+  color: var(--on-dark);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.tool:hover,
+.tool[aria-pressed='true'] {
+  background: var(--on-dark);
+  color: var(--ink);
+}
+
+.stage {
+  display: grid;
+  min-height: 0;
+  padding: clamp(0.75rem, 3vw, 2rem);
+}
+
+.stage img {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: contain;
+  cursor: zoom-in;
+}
+
+/* Tamanho real: a imagem mantém as dimensões originais e a área rola */
+.stage[data-zoomed='true'] {
+  display: block;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+.stage[data-zoomed='true'] img {
+  width: auto;
+  height: auto;
+  max-width: none;
+  cursor: zoom-out;
+}
+
+.footer {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 0.75rem clamp(0.75rem, 2vw, 2rem);
+  align-items: center;
+  padding: 0.75rem clamp(1rem, 3vw, 2rem) max(1rem, env(safe-area-inset-bottom));
+  border-top: 1px solid rgb(241 238 230 / 0.2);
+}
+
+.caption {
+  display: grid;
+  gap: 0.15rem;
+  justify-items: center;
+  text-align: center;
+}
+
+.caption :global(.label) {
+  color: var(--on-dark-3);
+}
+
+.title {
+  font-size: var(--text-base);
+  font-weight: 600;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+.caption a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 2.25rem;
+  font-size: var(--text-sm);
+  color: var(--on-dark-2);
+}
+
+/* Celular: botões de navegação só com ícone e legenda numa linha própria */
+@media (max-width: 40rem) {
+  .footer {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .caption {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .footer .tool span {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dialog[open] {
+    animation: none;
+  }
+}

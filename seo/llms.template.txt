@@ -1,0 +1,36 @@
+# Artur João Darós — Portfólio
+
+> Portfólio pessoal de Artur João Darós, Analista de Sistemas em formação contínua. Aprende backend na prática: hoje estuda Python, FastAPI e PostgreSQL; também explora Claude e Claude Code e já usou Unity, Ollama e IA local. Site em português (pt-BR).
+
+Este arquivo descreve o site para modelos de linguagem. O conteúdo é factual e limitado ao que o autor declarou e ao que está nos certificados publicados; o autor não se apresenta como especialista em nenhuma das tecnologias abaixo.
+
+## Páginas
+
+- [Portfólio]({{SITE_URL}}/): página única com as seções Sobre (e trajetória), Atualmente, Projetos, Tecnologias, Certificados e Contato.
+
+## Foco atual (em estudo)
+
+- Python: principal linguagem de estudo.
+- FastAPI: foco atual em desenvolvimento backend.
+- PostgreSQL: banco de dados estudado junto com o backend.
+
+## Em exploração
+
+- Claude e Claude Code: ferramentas de desenvolvimento assistido por IA.
+
+## Já usou
+
+- Git, GitHub, Unity, Ollama e IA local (modelos de IA rodando localmente).
+
+## Certificados
+
+20 cursos concluídos, de ago/2025 a set/2026: Python (12, DIO), bancos de dados e APIs (5, DIO) e Claude Academy (3: Claude 101, Claude Code 101 e Claude Code in Action). O site exibe a imagem de 15 deles; os demais aparecem apenas como texto.
+
+## Projetos
+
+Nenhum projeto está listado ainda; o GitHub é o lugar mais atualizado.
+
+## Contato
+
+- GitHub: https://github.com/arturjoaodaros-dev
+- E-mail: arturjoaodaros@gmail.com

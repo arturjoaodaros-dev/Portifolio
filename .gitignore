@@ -1,0 +1,13 @@
+node_modules
+dist
+
+# Certificados originais (contêm códigos de validação; o site usa só o que está em public/certificates/)
+Certifications/
+*.local
+.env
+*.log
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+.idea
+dist-ssr

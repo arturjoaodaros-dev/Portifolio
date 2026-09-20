@@ -1,0 +1,13 @@
+.prose {
+  display: grid;
+  gap: 1.25rem;
+  max-width: 40rem;
+  color: var(--fg-2);
+  text-wrap: pretty;
+}
+
+.lead {
+  font-size: var(--text-lg);
+  line-height: 1.4;
+  color: var(--fg);
+}

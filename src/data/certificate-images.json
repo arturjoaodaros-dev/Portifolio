@@ -1,0 +1,92 @@
+{
+  "poo": {
+    "width": 1016,
+    "height": 710,
+    "thumbWidth": 720,
+    "thumbHeight": 503
+  },
+  "heranca": {
+    "width": 1047,
+    "height": 741,
+    "thumbWidth": 720,
+    "thumbHeight": 510
+  },
+  "encapsulamento": {
+    "width": 1121,
+    "height": 796,
+    "thumbWidth": 720,
+    "thumbHeight": 511
+  },
+  "decoradores": {
+    "width": 1116,
+    "height": 789,
+    "thumbWidth": 720,
+    "thumbHeight": 509
+  },
+  "data-hora": {
+    "width": 1046,
+    "height": 742,
+    "thumbWidth": 720,
+    "thumbHeight": 511
+  },
+  "arquivos": {
+    "width": 1045,
+    "height": 745,
+    "thumbWidth": 720,
+    "thumbHeight": 513
+  },
+  "pacotes": {
+    "width": 1120,
+    "height": 793,
+    "thumbWidth": 720,
+    "thumbHeight": 510
+  },
+  "introducao-banco-de-dados": {
+    "width": 1120,
+    "height": 793,
+    "thumbWidth": 720,
+    "thumbHeight": 510
+  },
+  "bancos-relacionais": {
+    "width": 1120,
+    "height": 793,
+    "thumbWidth": 720,
+    "thumbHeight": 510
+  },
+  "python-db-api": {
+    "width": 1120,
+    "height": 793,
+    "thumbWidth": 720,
+    "thumbHeight": 510
+  },
+  "mongodb-nosql": {
+    "width": 1120,
+    "height": 793,
+    "thumbWidth": 720,
+    "thumbHeight": 510
+  },
+  "rest": {
+    "width": 1120,
+    "height": 793,
+    "thumbWidth": 720,
+    "thumbHeight": 510
+  },
+  "claude-101": {
+    "width": 733,
+    "height": 505,
+    "thumbWidth": 720,
+    "thumbHeight": 496
+  },
+  "claude-code-101": {
+    "width": 739,
+    "height": 506,
+    "thumbWidth": 720,
+    "thumbHeight": 493
+  },
+  "claude-code-in-action": {
+    "width": 735,
+    "height": 504,
+    "thumbWidth": 720,
+    "thumbHeight": 494
+  }
+}

@@ -1,0 +1,25 @@
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Marca-texto = algo que faço agora */
+.tag[data-level='studying'],
+.tag[data-level='exploring'] {
+  background: var(--marker);
+  color: var(--ink);
+}
+
+.tag[data-level='used'] {
+  padding: calc(0.15rem - 1px) calc(0.5rem - 1px);
+  border: 1px solid var(--fg-3);
+  color: var(--fg-2);
+}
